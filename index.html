@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DNA 메일 서명 생성기</title>
+	<style type="text/css">
+		table {
+			border-collapse: separate;
+			width: 50%;
+		}
+		th, td {
+			text-align: center;
+			padding: 8px;
+		}
+		th {
+			background-color: #f2f2f2;
+		}
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+	</style>
+	<script type="text/javascript">
+		function copyToClipboard(text) {
+			var dummy = document.createElement("textarea");
+			document.body.appendChild(dummy);
+			dummy.value = text;
+			dummy.select();
+			document.execCommand("copy");
+			document.body.removeChild(dummy);
+            alert("생성 완료");
+		}
+	</script>
+</head>
+<body>
+  <h1>DNA 메일 서명 생성기</h1>
+	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="검색...">
+  <button onclick="
+	var names = document.getElementsByName('name');
+	var code = '';
+	for (var i = 0; i < names.length; i++) {
+	if (names[i].checked) {
+	code += '<img src=\'' + names[i].value + '\' alt=\'' + names[i].value + '\' width=\'350\' height=\'100\'>';
+}
+}
+copyToClipboard(code);
+">생성</button>
+	<table id="myTable">
+		<thead>
+			<tr>
+				<th style="width: 50%;">선택</th>
+				<th style="width: 50%;">이름</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox" name="name" value="김오민"></td>
+				<td>김오민</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" value="신상은"></td>
+				<td>신상은</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" value="서휘"></td>
+				<td>서휘</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" value="심수안"></td>
+				<td>심수안</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" value="박재영"></td>
+				<td>박재영</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="name" value="손혜림"></td>
+				<td>손혜림</td>
+			</tr>
+
+        </tbody>
+
+    </table><br>
+
+    <script type="text/javascript">
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
